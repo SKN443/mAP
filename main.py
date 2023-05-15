@@ -548,6 +548,7 @@ with open(output_files_path + "/output.txt", 'w') as output_file:
             ovmax = -1
             gt_match = -1
             # load detected object bounding-box
+            print(detection)
             bb = [ float(x) for x in detection["bbox"].split() ]
             for obj in ground_truth_data:
                 # look for a class_name match
