@@ -496,6 +496,7 @@ for class_index, class_name in enumerate(gt_classes):
 """
  Calculate the AP for each class
 """
+sum_confidence = 0.0
 sum_AP = 0.0
 ap_dictionary = {}
 lamr_dictionary = {}
@@ -582,7 +583,7 @@ with open(output_files_path + "/output.txt", 'w') as output_file:
                             tp[idx] = 1
                             gt_match["used"] = True
                             count_true_positives[class_name] += 1
-                            print(detection)
+                            sum_confidence += float(detection["confidence"])
                             # update the ".json" file
                             with open(gt_file, 'w') as f:
                                     f.write(json.dumps(ground_truth_data))
@@ -601,7 +602,7 @@ with open(output_files_path + "/output.txt", 'w') as output_file:
 
             """
              Draw image to show animation
-            """
+            """            
             if show_animation:
                 height, widht = img.shape[:2]
                 # colors (OpenCV works with BGR)
@@ -731,6 +732,8 @@ with open(output_files_path + "/output.txt", 'w') as output_file:
     output_file.write(text + "\n")
     print(text)
 
+with open('output.txt', 'w') as f:
+    f.write(sum_confidence)
 """
  Draw false negatives
 """
