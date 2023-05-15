@@ -733,7 +733,7 @@ with open(output_files_path + "/output.txt", 'w') as output_file:
     print(text)
 
 with open('output.txt', 'w') as f:
-    f.write(sum_confidence)
+    f.write(str(sum_confidence))
 """
  Draw false negatives
 """
