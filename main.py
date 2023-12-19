@@ -730,7 +730,6 @@ with open(output_files_path + "/output.txt", 'w') as output_file:
     mAP = sum_AP / n_classes
     text = "mAP = {0:.2f}%".format(mAP*100)
     output_file.write(text + "\n")
-    print(text)
 
 with open('output.txt', 'w') as f:
     f.write(str(sum_confidence))
